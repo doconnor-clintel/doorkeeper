@@ -376,10 +376,13 @@ RSpec.describe Doorkeeper::Config do
         end
 
         Object.const_set("ApplicationWithOwner", application_with_owner_class)
+        # Manually reload Doorkeeper ORM setup because we're patching classes
+        Doorkeeper.run_orm_hooks
       end
 
       after do
         Object.send(:remove_const, :ApplicationWithOwner)
+        Doorkeeper.run_orm_hooks
       end
 
       it "adds support for application owner" do
@@ -404,10 +407,13 @@ RSpec.describe Doorkeeper::Config do
         end
 
         Object.const_set("ApplicationWithOwner", application_with_owner_class)
+        # Manually reload Doorkeeper ORM setup because we're patching classes
+        Doorkeeper.run_orm_hooks
       end
 
       after do
         Object.send(:remove_const, :ApplicationWithOwner)
+        Doorkeeper.run_orm_hooks
       end
 
       it "adds support for application owner" do

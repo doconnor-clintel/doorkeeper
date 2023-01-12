@@ -12,6 +12,7 @@ User-visible changes worth mentioning.
 - [#1605] Fix URI validation for Ruby 3.2+.
 - [#1625] Exclude endless access tokens from `StaleRecordsCleaner`.
 - [#1626] Remove deprecated `active_record_options` config option.
+- [#1627] Move polymorphic resource owner and application owner associations in a lazy ORM hooks.
 
 ## 5.6.2
 

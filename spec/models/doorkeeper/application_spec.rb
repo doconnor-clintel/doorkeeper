@@ -114,10 +114,13 @@ RSpec.describe Doorkeeper::Application do
         end
 
         Object.const_set("ApplicationWithOwner", application_with_owner_class)
+        # Manually reload Doorkeeper ORM setup because we're patching classes
+        Doorkeeper.run_orm_hooks
       end
 
       after do
         Object.send(:remove_const, :ApplicationWithOwner)
+        Doorkeeper.run_orm_hooks
       end
 
       it "is valid given valid attributes" do
@@ -135,10 +138,13 @@ RSpec.describe Doorkeeper::Application do
         @owner = FactoryBot.build_stubbed(:doorkeeper_testing_user)
 
         Object.const_set("ApplicationWithOwner", application_with_owner_class)
+        # Manually reload Doorkeeper ORM setup because we're patching classes
+        Doorkeeper.run_orm_hooks
       end
 
       after do
         Object.send(:remove_const, :ApplicationWithOwner)
+        Doorkeeper.run_orm_hooks
       end
 
       it "is invalid without an owner" do
